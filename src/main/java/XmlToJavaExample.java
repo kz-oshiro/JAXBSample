@@ -24,5 +24,21 @@ public class XmlToJavaExample {
                 System.out.println(node.getNodeName() + " : " + node.getTextContent());
             }
         }
+        
+        NodeList nodeList = doc.getElementsByTagName("*");
+
+        for (int i = 0; i < nodeList.getLength(); i++) {
+            Node node = nodeList.item(i);
+            printNodeValue(node);
+        } 
+
+    }
+    
+    public static void printNodeValue(Node node) {
+        if (node.getNodeType() == Node.ELEMENT_NODE) {
+            String nodeName = node.getNodeName();
+            String nodeValue = node.getTextContent().trim();
+            System.out.println(nodeName + "：" + nodeValue);
+        }
     }
 }
